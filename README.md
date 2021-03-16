@@ -3,10 +3,16 @@ Analyzes an Apache log file and generates 12 files, one for each month. In each 
 
 Required: Hadoop MapReduce, Hadoop HDFS, Java 7
 
+$ make : View the following make targets with their commands and descriptions.
 
-Usage:
+$ make local
+	
+$ make hdfs
 
-View the following make targets with their commands and descriptions.
+$ make cleanhdfs
 
-$ make
+$ make cleanlocal
 
+$ make outputhdfs
+
+$ make outputlocal
