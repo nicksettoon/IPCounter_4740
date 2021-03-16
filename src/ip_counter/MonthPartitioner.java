@@ -4,8 +4,6 @@ package ip_counter;
 import ip_counter.Month;
 
 // hadoop imports
-import org.apache.hadoop.conf.Configurable;
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 

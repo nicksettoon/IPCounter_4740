@@ -1,0 +1,28 @@
+DIR=IPCounter
+
+all: # displays this file
+	cat ./Makefile
+
+local: #runs the partitioner jar on the local fs
+	make cleanlocal 2> /dev/null
+	gunzip -c access_log.gz > access_log 
+	java -jar local_partitioner.jar access_log output
+	make outputlocal 2> /dev/null
+	
+hdfs: # runs the main partitioner job and displays results
+	make cleanhdfs 2> /dev/null
+	./runner.sh ${DIR}
+	make output 2> /dev/null
+
+cleanhdfs: # cleans up previous hdfs partitioner run
+	-hdfs dfs -rm -r ${DIR} 2> /dev/null
+
+cleanlocal: #cleans up previous local partitioner run
+	-rm -rf ./output
+	-rm access_log
+
+outputhdfs: # prints output #11 from previous partitioner run for comparison with assignment sheet
+	hdfs dfs -cat ${DIR}/part-r-00011 2> /dev/null | less
+
+outputlocal: # prints output #11 from previous partitioner run for comparison with assignment sheet
+	cat output/part-r-00011 2> /dev/null | less
