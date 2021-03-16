@@ -1,7 +1,9 @@
 # IPCounter_4740
 Analyzes an Apache log file and generates 12 files, one for each month. In each file, there is a list of IP addresses with the number of times each IP was hit.
 
-Required: Hadoop MapReduce, Hadoop HDFS, Java 7
+Required:
+	Hadoop MapReduce, Hadoop HDFS, Java 7
+	A file titled access_log.gz containing a valid Apache HTTP log file
 
 This application is intended to be run with the make targets provided in the Makefile for ease of use.
 
